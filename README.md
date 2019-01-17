@@ -30,4 +30,4 @@ sudo dnf install snapd
 
 ([Don't have snapd installed?](https://snapcraft.io/docs/core/install))
 
-![Brave](screenshot.png?raw=true "Brave"
+![Brave](screenshot.png?raw=true "Brave")
