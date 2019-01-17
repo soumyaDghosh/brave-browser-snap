@@ -1,3 +1,7 @@
+<h1>
+  <strong>WARNING: We do not officially maintain this Snap package. Please download Brave using <a href="https://brave-browser.readthedocs.io/en/latest/installing-brave.html">our official repositories</a>.</strong>
+</h1>
+
 <h1 align="center">
   <img src="https://dashboard.snapcraft.io/site_media/appmedia/2017/04/brave-256px.png" alt="Brave">
   <br />
