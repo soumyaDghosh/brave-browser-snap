@@ -19,10 +19,14 @@
 <a href="https://github.com/canonical-websites/build.snapcraft.io/issues/843">Bug #843</a>
 </p>
 
-## Install
+## Snap installation
+### Ubuntu 
+sudo apt install snapd-xdg-open
+### Fedora
+sudo dnf install snapd
 
-    sudo apt install snapd-xdg-open
-    sudo snap install brave --beta
+## Install
+ sudo snap install brave --beta
 
 ([Don't have snapd installed?](https://snapcraft.io/docs/core/install))
 
