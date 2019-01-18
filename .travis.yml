@@ -1,4 +1,3 @@
-
 language: bash
 os: linux
 sudo: enabled
@@ -17,7 +16,7 @@ install:
   - mkdir -p "$TRAVIS_BUILD_DIR/snaps-cache"
 script:
   - export PATH=/snap/bin:$PATH
-  - sudo snapcraft cleanbuild
+  - sudo snapcraft cleanbuild --debug
   - sudo cp *.snap "$(echo "$TRAVIS_REPO_SLUG" | sed -e 's|.*/\(.*\)|\1|')-pr$TRAVIS_PULL_REQUEST.snap"
 after_success:
   - sudo snap install transfer
