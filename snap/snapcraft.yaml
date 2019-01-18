@@ -65,7 +65,6 @@ apps:
       - opengl
       - password-manager-service
       - pulseaudio
-      - remove-media
       - screen-inhibit-control
       - unity7
       - upower-observe
