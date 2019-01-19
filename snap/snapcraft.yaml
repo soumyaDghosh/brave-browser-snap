@@ -22,7 +22,7 @@ parts:
       snapcraftctl pull
       rm -rf etc/cron.daily/ 
       rm -rf usr/bin/brave-browser-dev
-      chmod 4555 ./opt/brave.com/brave-dev/brave-sandbox
+      chmod 0755 ./opt/brave.com/brave-dev/brave-sandbox
       unlink ./opt/brave.com/brave-dev/brave-browser
       sed -i 's|Icon=brave-browser|Icon=/opt/brave.com/brave-dev/product_logo_128\.png|g' usr/share/applications/brave-browser-dev.desktop
     after:
