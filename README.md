@@ -20,9 +20,13 @@
 </p>
 
 ## [Snap installation](https://docs.snapcraft.io/installing-snapd/6735)
+## Todo
+- [ ] Tweak isolation to protect the entire filesystem not in an acceptable download path or brave settings. Currently brave settings is disabled.
+- [ ] Validate LD_LIBRARYPATH is clean. This is a good first issue for someone looking into help with the project.
+- [ ] Fix default browser
 
 ## Install
- sudo snap install brave --beta
+ sudo snap install brave
 
 ([Don't have snapd installed?](https://snapcraft.io/docs/core/install))
 
