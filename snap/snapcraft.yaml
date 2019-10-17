@@ -1,5 +1,5 @@
 name: brave
-version: v0.69.135
+version: 0.69.135
 summary: Browse faster and safer with Brave.
 description: |
  The new Brave browser automatically blocks ads and trackers, making it
@@ -21,7 +21,7 @@ parts:
     override-pull: |
       snapcraftctl pull
       rm -rf etc/cron.daily/
-      rm -rf usr/bin/brave-browser
+      rm -rf usr/bin/brave-browser usr/bin/brave-browser-stable
       chmod 0755 ./opt/brave.com/brave/brave-sandbox
       sed -i 's|Icon=brave-browser|Icon=/opt/brave.com/brave/product_logo_128\.png|g' usr/share/applications/brave-browser.desktop
     after:
