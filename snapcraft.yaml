@@ -23,8 +23,8 @@ parts:
       rm -rf etc/cron.daily/
       rm -rf usr/bin/brave-browser usr/bin/brave-browser-nightly
       chmod 0755 ./opt/brave.com/brave-nightly/chrome-sandbox
-      sed -i 's|Icon=brave-browser|Icon=/opt/brave.com/brave/product_logo_128\.png|g' usr/share/applications/brave-browser.desktop
-      sed -i -e '/^Actions=/d' usr/share/applications/brave-browser.desktop
+      sed -i 's|Icon=brave-browser|Icon=/opt/brave.com/brave-nightly/product_logo_128\.png|g' usr/share/applications/brave-browser-nightly.desktop
+      sed -i -e '/^Actions=/d' usr/share/applications/brave-browser-nightly.desktop
     after:
       - desktop-gtk3
     stage-packages:
@@ -45,8 +45,8 @@ parts:
 
 apps:
   brave:
-    command: bin/desktop-launch $SNAP/opt/brave.com/brave/brave-browser
-    desktop: usr/share/applications/brave-browser.desktop
+    command: bin/desktop-launch $SNAP/opt/brave.com/brave-nightly/brave-browser
+    desktop: usr/share/applications/brave-browser-nightly.desktop
     # Correct the TMPDIR path for Chromium Framework/Electron to
     # ensure libappindicator has readable resources.
     environment:
