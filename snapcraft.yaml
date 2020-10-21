@@ -1,0 +1,91 @@
+name: brave
+version: 1.15.75
+summary: Browse faster and safer with Brave.
+description: |
+ The new Brave browser automatically blocks ads and trackers, making it
+ faster and safer than your current browser. Start supporting publishers
+ today with our new Brave Payments system.
+
+grade: stable
+confinement: strict
+
+architectures:
+  - build-on: amd64
+
+parts:
+  brave:
+    plugin: dump
+    source: https://github.com/brave/brave-browser/releases/download/v$SNAPCRAFT_PROJECT_VERSION/brave-browser_$SNAPCRAFT_PROJECT_VERSION_amd64.deb
+    source-type: deb
+    # Correct path to icon.
+    override-pull: |
+      snapcraftctl pull
+      rm -rf etc/cron.daily/
+      rm -rf usr/bin/brave-browser usr/bin/brave-browser-stable
+      chmod 0755 ./opt/brave.com/brave/chrome-sandbox
+      sed -i 's|Icon=brave-browser|Icon=/opt/brave.com/brave/product_logo_128\.png|g' usr/share/applications/brave-browser.desktop
+      sed -i -e '/^Actions=/d' usr/share/applications/brave-browser.desktop
+    after:
+      - desktop-gtk3
+    stage-packages:
+      - gir1.2-gnomekeyring-1.0
+      - libasound2
+      - libgconf-2-4
+      - libgl1-mesa-glx
+      - libglu1-mesa
+      - libgnome-keyring0
+      - libcap2
+      - libgcrypt20
+      - libnotify4
+      - libnspr4
+      - libnss3
+      - libpulse0
+      - libxtst6
+      - libxss1
+
+apps:
+  brave:
+    command: bin/desktop-launch $SNAP/opt/brave.com/brave/brave-browser
+    desktop: usr/share/applications/brave-browser.desktop
+    # Correct the TMPDIR path for Chromium Framework/Electron to
+    # ensure libappindicator has readable resources.
+    environment:
+      # Correct the TMPDIR path for Chromium Framework/Electron to
+      # ensure libappindicator has readable resources
+      TMPDIR: $XDG_RUNTIME_DIR
+      # Fallback to XWayland if running in a Wayland session.
+      DISABLE_WAYLAND: 1
+    plugs:
+      - avahi-observe
+      - browser-sandbox
+      - camera
+      - cups-control
+      - desktop
+      - gsettings
+      - home
+      - mount-observe
+      - network
+      - opengl
+      - password-manager-service
+      - pulseaudio
+      - screen-inhibit-control
+      - unity7
+      - upower-observe
+      - x11
+
+plugs:
+  browser-sandbox:
+    interface: browser-support
+    allow-sandbox: true
+  gtk-3-themes:
+    interface: content
+    target: $SNAP/data-dir/themes
+    default-provider: gtk-common-themes
+  icon-themes:
+    interface: content
+    target: $SNAP/data-dir/icons
+    default-provider: gtk-common-themes
+  sound-themes:
+    interface: content
+    target: $SNAP/data-dir/sounds
+    default-provider: gtk-common-themes
