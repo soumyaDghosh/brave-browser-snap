@@ -45,7 +45,7 @@ parts:
 
 apps:
   brave:
-    command: bin/desktop-launch $SNAP/opt/brave.com/brave-nightly/brave-browser
+    command: bin/desktop-launch $SNAP/opt/brave.com/brave-nightly/brave-browser-nightly
     desktop: usr/share/applications/brave-browser-nightly.desktop
     # Correct the TMPDIR path for Chromium Framework/Electron to
     # ensure libappindicator has readable resources.
