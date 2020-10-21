@@ -21,8 +21,8 @@ parts:
     override-pull: |
       snapcraftctl pull
       rm -rf etc/cron.daily/
-      rm -rf usr/bin/brave-browser usr/bin/brave-browser-edge
-      chmod 0755 ./opt/brave.com/brave/chrome-sandbox
+      rm -rf usr/bin/brave-browser usr/bin/brave-browser-nightly
+      chmod 0755 ./opt/brave.com/brave-nightly/chrome-sandbox
       sed -i 's|Icon=brave-browser|Icon=/opt/brave.com/brave/product_logo_128\.png|g' usr/share/applications/brave-browser.desktop
       sed -i -e '/^Actions=/d' usr/share/applications/brave-browser.desktop
     after:
