@@ -18,10 +18,10 @@ install:
 script:
   - export PATH=/snap/bin:$PATH
   - sudo snapcraft cleanbuild --debug
-  - sudo cp *.snap "$(echo "$TRAVIS_REPO_SLUG" | sed -e 's|.*/\(.*\)|\1|')-pr$TRAVIS_PULL_REQUEST.snap"
+  - sudo cp *.snap "$(echo "$TRAVIS_REPO_SLUG" | sed -e 's|.*/\(.*\)|\1|')-pr$TRAVIS_BRANCH.snap"
 after_success:
   - sudo snap install transfer
-  - timeout 180 sudo /snap/bin/transfer "$(echo "$TRAVIS_REPO_SLUG" | sed -e 's|.*/\(.*\)|\1|')-pr$TRAVIS_PULL_REQUEST.snap"
+  - timeout 180 sudo /snap/bin/transfer "$(echo "$TRAVIS_REPO_SLUG" | sed -e 's|.*/\(.*\)|\1|')-pr$TRAVIS_BRANCH.snap"
 after_failure:
   - sudo journalctl -u snapd
   - sudo snap install http
