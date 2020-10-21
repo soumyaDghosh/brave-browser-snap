@@ -7,8 +7,8 @@ env:
     - LANG: C.UTF-8
 
 install:
-  - sudo apt update
-  - sudo apt install -y snapd
+  - sudo apt-get -qq update
+  - sudo apt-get -qq install snapd
   - sudo snap install lxd --channel 3.0/stable
   - sudo snap install snapcraft --candidate --classic
   - sudo /snap/bin/lxd waitready
@@ -18,11 +18,5 @@ install:
 script:
   - export PATH=/snap/bin:$PATH
   - sudo snapcraft cleanbuild --debug
-  - sudo cp *.snap "$(echo "$TRAVIS_REPO_SLUG" | sed -e 's|.*/\(.*\)|\1|')-pr$TRAVIS_BRANCH.snap"
-after_success:
-  - sudo snap install transfer
-  - timeout 180 sudo /snap/bin/transfer "$(echo "$TRAVIS_REPO_SLUG" | sed -e 's|.*/\(.*\)|\1|')-pr$TRAVIS_BRANCH.snap"
 after_failure:
   - sudo journalctl -u snapd
-  - sudo snap install http
-  - /snap/bin/http https://api.snapcraft.io/v2/snaps/info/core architecture==amd64 Snap-Device-Series:16
