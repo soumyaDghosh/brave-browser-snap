@@ -7,8 +7,8 @@ env:
     - LANG: C.UTF-8
 
 install:
-  - sudo apt update
-  - sudo apt install -y snapd
+  - sudo apt-get -qq update
+  - sudo apt-get -qq install snapd
   - sudo snap install lxd --channel 3.0/stable
   - sudo snap install snapcraft --candidate --classic
   - sudo /snap/bin/lxd waitready
