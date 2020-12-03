@@ -1,5 +1,6 @@
 name: brave
 version: 1.17.75
+base: core18
 summary: Browse faster and safer with Brave.
 description: |
  The new Brave browser automatically blocks ads and trackers, making it
