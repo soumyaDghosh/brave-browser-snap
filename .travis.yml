@@ -1,22 +1,29 @@
 language: bash
 os: linux
+dist: bionic
 sudo: enabled
 env:
   global:
     - LC_ALL: C.UTF-8
     - LANG: C.UTF-8
+    - SNAPCRAFT_BUILD_ENVIRONMENT: 'lxd'
+    - SNAPCRAFT_BUILD_INFO: 1
+
+addons:
+  snaps:
+   - name: snapcraft
+     channel: stable
+     confinement: classic
+   - name: lxd
+     channel: stable
 
 install:
-  - sudo apt-get -qq update
-  - sudo apt-get -qq install snapd
-  - sudo snap install lxd --channel 3.0/stable
-  - sudo snap install snapcraft --candidate --classic
+  - sudo usermod --append --groups lxd $USER
+  - sudo /snap/bin/lxd.migrate -yes
   - sudo /snap/bin/lxd waitready
-  - yes | sudo lxd.migrate
   - sudo /snap/bin/lxd init --auto
   - mkdir -p "$TRAVIS_BUILD_DIR/snaps-cache"
 script:
-  - export PATH=/snap/bin:$PATH
-  - sudo snapcraft build --debug
+  - sg lxd -c snapcraft
 after_failure:
   - sudo journalctl -u snapd
