@@ -79,6 +79,7 @@ parts:
       - pulseaudio
       - shared-mime-info
       - ubuntu-settings
+      - fonts-liberation
     override-pull: |
       set -eux
       snapcraftctl pull
