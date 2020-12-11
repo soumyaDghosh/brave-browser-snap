@@ -81,8 +81,9 @@ parts:
       - ubuntu-settings
       - fonts-liberation
     override-pull: |
-      set -eux
+      set -eu
       snapcraftctl pull
+      chmod 0755 ./opt/brave.com/brave/chrome-sandbox
       rm -rf etc/cron.daily/ usr/bin/brave-browser usr/bin/brave-browser-stable
       sed -i 's|Icon=brave-browser|Icon=/opt/brave.com/brave/product_logo_128\.png|g' usr/share/applications/brave-browser.desktop
     prime:
@@ -162,7 +163,7 @@ parts:
     plugin: nil
     override-pull: ""
     override-prime: |
-      set -eux
+      set -eu
       glib-compile-schemas usr/share/glib-2.0/schemas
       update-mime-database usr/share/mime
   gtk-key-themes:
@@ -176,7 +177,7 @@ parts:
     plugin: nil
     override-pull: ""
     override-prime: |
-      set -eux
+      set -eu
       mkdir -p usr/bin
       cd usr/bin
       ln -s /usr/bin/xdg-open xdg-email
