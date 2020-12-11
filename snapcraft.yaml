@@ -10,8 +10,6 @@ description: |
  today with our new Brave Payments system.
 confinement: strict
 base: core18
-assumes:
-  - snapd2.43
 apps:
   brave:
     command: bin/desktop-launch $SNAP/opt/brave.com/brave/brave-browser
@@ -61,9 +59,6 @@ plugs:
     interface: content
     target: $SNAP/data-dir/sounds
     default-provider: gtk-common-themes
-  brave-config:
-    interface: personal-files
-    read: [$HOME/.config/brave]
 parts:
   brave:
     plugin: dump
@@ -173,11 +168,3 @@ parts:
     prime:
       - usr/share/themes/Default/
       - usr/share/themes/Emacs/
-  xdg-email:
-    plugin: nil
-    override-pull: ""
-    override-prime: |
-      set -eu
-      mkdir -p usr/bin
-      cd usr/bin
-      ln -s /usr/bin/xdg-open xdg-email
