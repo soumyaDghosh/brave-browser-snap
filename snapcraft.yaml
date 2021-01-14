@@ -25,6 +25,7 @@ apps:
       - camera
       - cups-control
       - desktop
+      - desktop-legacy
       - gsettings
       - home
       - joystick
