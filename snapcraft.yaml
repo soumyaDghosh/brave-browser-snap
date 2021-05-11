@@ -9,6 +9,7 @@ description: |
  faster and safer than your current browser. Start supporting publishers
  today with our new Brave Payments system.
 confinement: strict
+compression: lzo
 base: core18
 apps:
   brave:
@@ -41,6 +42,7 @@ apps:
       - u2f-devices
       - unity7
       - upower-observe
+      - wayland
       - x11
     slots:
       - mpris
