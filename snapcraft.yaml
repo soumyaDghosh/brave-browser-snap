@@ -3,6 +3,7 @@ version: 1.47.186
 grade: stable
 architectures:
   - build-on: amd64
+  - build-on: arm64
 summary: Browse faster and safer with Brave.
 description: |
  The new Brave browser automatically blocks ads and trackers, making it
@@ -65,7 +66,7 @@ plugs:
 parts:
   brave:
     plugin: dump
-    source: https://github.com/brave/brave-browser/releases/download/v$SNAPCRAFT_PROJECT_VERSION/brave-browser_$SNAPCRAFT_PROJECT_VERSION_amd64.deb
+    source: https://github.com/brave/brave-browser/releases/download/v$SNAPCRAFT_PROJECT_VERSION/brave-browser_$SNAPCRAFT_PROJECT_VERSION_$SNAPCRAFT_TARGET_ARCH.deb
     after: [desktop-gtk3, gtk-key-themes]
     stage-packages:
       - libgbm1
