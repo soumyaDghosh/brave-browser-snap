@@ -46,6 +46,10 @@ plugs:
   browser-sandbox:
     interface: browser-support
     allow-sandbox: true
+slots:
+  mpris:
+    interface: mpris
+    name: chromium
 parts:
   brave:
     plugin: dump
