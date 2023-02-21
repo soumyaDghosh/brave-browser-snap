@@ -49,7 +49,7 @@ plugs:
 slots:
   mpris:
     interface: mpris
-    name: chromium
+    name: brave
 parts:
   brave:
     plugin: dump
