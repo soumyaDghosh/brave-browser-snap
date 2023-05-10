@@ -57,7 +57,7 @@ parts:
     override-pull: |
       set -eu
       craftctl default
-      chmod 0755 ./opt/brave.com/brave/chrome-sandbox
+      chmod 4555 ./opt/brave.com/brave/chrome-sandbox
       rm -rf etc/cron.daily/ usr/bin/brave-browser usr/bin/brave-browser-stable
       sed -i 's|Icon=brave-browser|Icon=/opt/brave.com/brave/product_logo_128\.png|g' usr/share/applications/brave-browser.desktop
     prime:
@@ -89,4 +89,3 @@ parts:
       - -usr/share/upstart
       - -usr/share/zsh
       - -var
-      - -opt/brave.com/brave/chrome-sandbox
