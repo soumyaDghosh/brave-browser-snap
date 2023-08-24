@@ -40,12 +40,10 @@ apps:
       - network-manager
       - opengl
       - password-manager-service
-#      - personal-files
       - pulseaudio
       - raw-usb
       - removable-media
       - screen-inhibit-control
-#      - system-files
       - system-packages-doc
       - unity7
       - u2f-devices
@@ -62,14 +60,6 @@ plugs:
     content: foo
     default-provider: cups
     target: $SNAP_DATA/foo
-#  brave-config:
-#    interface: personal-files
-#    read:
-#      - $HOME/.config/brave
-#  etc-brave-policies:
-#    interface: system-files
-#    read:
-#      - /etc/brave/policies
 slots:
   mpris:
     interface: mpris
