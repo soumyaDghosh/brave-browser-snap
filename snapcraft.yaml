@@ -12,11 +12,14 @@ description: |
 confinement: strict
 compression: lzo
 base: core22
+assumes:
+  - snapd2.55 # TODO: temporarily needed for the cups interface
 apps:
   brave:
     command: opt/brave.com/brave/brave-browser
     desktop: usr/share/applications/brave-browser.desktop
-    extensions: [gnome]
+    extensions:
+      - gnome
     environment:
       DISABLE_WAYLAND: 1
       BRAVE_DESKTOP: brave-browser.desktop
@@ -26,11 +29,14 @@ apps:
       - audio-record
       - bluez
       - camera
+      - content
+      - cups
       - cups-control
       - home
       - joystick
       - mount-observe
       - network
+      - network-bind
       - network-manager
       - opengl
       - password-manager-service
@@ -38,6 +44,8 @@ apps:
       - raw-usb
       - removable-media
       - screen-inhibit-control
+      - system-packages-doc
+      - unity7
       - u2f-devices
       - upower-observe
     slots:
@@ -46,6 +54,12 @@ plugs:
   browser-sandbox:
     interface: browser-support
     allow-sandbox: true
+  # TODO: Temporarily needed for the cups interface
+  foo-install-cups:
+    interface: content
+    content: foo
+    default-provider: cups
+    target: $SNAP_DATA/foo
 slots:
   mpris:
     interface: mpris
