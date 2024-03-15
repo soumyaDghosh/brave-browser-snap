@@ -97,3 +97,16 @@ parts:
       - -usr/share/upstart
       - -usr/share/zsh
       - -var
+
+  # Create a symlink xdg-email -> xdg-open, as the latter is perfectly able to
+  # handle mailto: URLs (see https://launchpad.net/bugs/1849774).
+  # xdg-open is a wrapper provided by the core snap.
+  xdg-email:
+    plugin: nil
+    override-pull: "" 
+    override-prime: |
+      set -eux
+      mkdir -p usr/bin
+      cp /snap/core22/current/usr/bin/xdg-open usr/bin
+      cd usr/bin
+      ln -s xdg-open xdg-email
