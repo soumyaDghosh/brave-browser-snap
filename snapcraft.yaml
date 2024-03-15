@@ -107,6 +107,6 @@ parts:
     override-prime: |
       set -eux
       mkdir -p usr/bin
-      cp -r /snap/core22/current/usr/bin/xdg-open usr/bin
+      cp /snap/core22/current/usr/bin/xdg-open usr/bin
       cd usr/bin
       ln -s xdg-open xdg-email
