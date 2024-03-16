@@ -24,6 +24,10 @@ apps:
       BRAVE_SNAP: 1
       BRAVE_DESKTOP: brave.desktop
       BRAVE_CONFIG_HOME: $SNAP_USER_COMMON
+      MAN_TEST_DISABLE_SYSTEM_CONFIG: 1
+      MANPATH: $SNAP
+      GROFF_FONT_PATH: $SNAP/usr/share/groff/current/font
+      GROFF_TMAC_PATH: $SNAP/usr/share/groff/current/tmac
     plugs:
       - audio-playback
       - audio-record
@@ -110,3 +114,26 @@ parts:
       cp /snap/core22/current/usr/bin/xdg-open usr/bin
       cd usr/bin
       ln -s xdg-open xdg-email
+
+  manpage:
+    plugin: nil
+    stage-packages:
+      - groff-base
+      - libgdbm6
+      - libpipeline1
+      - man-db
+    prime:
+      - -etc
+      - -usr/lib/tmpfiles.d
+      - -usr/lib/mime
+      - -usr/lib/groff
+      - -usr/share/bug
+      - -usr/share/calendar
+      - -usr/share/doc
+      - -usr/share/doc-base
+      - -usr/share/lintian
+      - -usr/share/man
+      - -usr/share/man-db
+      - -var
+    organize:
+      usr/lib/man-db: usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR
