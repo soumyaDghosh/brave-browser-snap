@@ -100,6 +100,8 @@ parts:
       - -usr/share/upstart
       - -usr/share/zsh
       - -var
+    organize:
+      usr/share/man/man1/brave-browser.1.gz: usr/share/man/man1/brave.1.gz
 
   # Create a symlink xdg-email -> xdg-open, as the latter is perfectly able to
   # handle mailto: URLs (see https://launchpad.net/bugs/1849774).
